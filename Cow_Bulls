@@ -1,0 +1,46 @@
+import random
+secret= random.randint(1000,9999)
+number= str(secret)
+chances=0
+
+# print(number)
+# for i in str(number):
+#     print(i)
+print('Guess the four digit random number-')
+
+while chances<=7 :
+    Guess_number= input("Enter the number: ")
+    if len(Guess_number)!=4 or not Guess_number.isdigit():
+           print("Please type valid number")
+    bull=0
+    for i in range(4):
+        if Guess_number[i]==number[i]:
+            bull+=1
+
+    number_remaining = [number[i] for i in range(4) if Guess_number[i] != number[i]]
+    guess_remaining = [Guess_number[i] for i in range(4) if Guess_number[i] != number[i]]
+    cow=0
+    for digit in guess_remaining:
+            
+                if digit in number_remaining:
+                  cow+=1
+                #   number_remaining.remove(digit)              
+    print(f"Bull: {bull}, cow: {cow}")
+
+    if bull==4:
+            print("You Guess the exact number")
+            print("Thank you ")
+            break
+    
+    # print(Guess_number)
+    chances+=1
+if bull!=4:
+            print("you have used max chances to guess, thank you for trying ")
+
+
+
+
+
+
+
+    
